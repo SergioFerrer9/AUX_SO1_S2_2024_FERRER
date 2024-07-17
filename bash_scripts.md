@@ -16,3 +16,17 @@ Un script de Bash es simplemente un archivo de texto que contiene una serie de c
 #!/bin/bash
 # Este es un script básico de Bash
 echo "Hola, mundo"
+```
+
+## 1.2.3. Variables y control de flujo
+En Bash, puedes definir variables y usar estructuras de control de flujo como bucles y condicionales.
+
+Variables
+Las variables en Bash se definen simplemente asignando un valor a un nombre. Para acceder al valor de una variable, se utiliza el símbolo $ seguido del nombre de la variable.
+
+```bash
+#!/bin/bash
+# Definir una variable
+nombre="Mundo"
+echo "Hola, $nombre"
+```
