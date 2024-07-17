@@ -21,12 +21,26 @@ echo "Hola, mundo"
 ## 1.2.3. Variables y control de flujo
 En Bash, puedes definir variables y usar estructuras de control de flujo como bucles y condicionales.
 
-Variables
-Las variables en Bash se definen simplemente asignando un valor a un nombre. Para acceder al valor de una variable, se utiliza el símbolo $ seguido del nombre de la variable.
+- **Variables**
+Las variables en Bash se definen simplemente asignando un valor a un nombre. Para acceder al valor de una variable, se utiliza el símbolo `$` seguido del nombre de la variable.
 
 ```bash
 #!/bin/bash
 # Definir una variable
 nombre="Mundo"
 echo "Hola, $nombre"
+```
+
+- ** Condicionales**
+
+Las estructuras condicionales en Bash permiten ejecutar comandos basados en ciertas condiciones. La estructura básica de un condicional `if` es la siguiente:
+
+```bash
+#!/bin/bash
+# Condicional if-else
+if [ "$nombre" = "Mundo" ]; then
+  echo "Hola, Mundo"
+else
+  echo "Hola, desconocido"
+fi
 ```
