@@ -30,7 +30,7 @@ nombre="Mundo"
 echo "Hola, $nombre"
 ```
 
-- ** Condicionales**: Las estructuras condicionales en Bash permiten ejecutar comandos basados en ciertas condiciones. La estructura básica de un condicional `if` es la siguiente:
+- **Condicionales**: Las estructuras condicionales en Bash permiten ejecutar comandos basados en ciertas condiciones. La estructura básica de un condicional `if` es la siguiente:
 
 ```bash
 #!/bin/bash
