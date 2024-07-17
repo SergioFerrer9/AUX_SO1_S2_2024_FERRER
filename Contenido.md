@@ -4,9 +4,9 @@
 
 ### 1. Environmental Sustainability
 
-- **1.5.1. ¿Qué es la sostenibilidad ambiental?**
-- **1.5.2. Prácticas sostenibles en la Computación en la Nube**
-- **1.5.3. Herramientas para crear sistemas sostenibles**
+- **1.1.1. ¿Qué es la sostenibilidad ambiental?**
+- **1.1.2. Prácticas sostenibles en la Computación en la Nube**
+- **1.1.3. Herramientas para crear sistemas sostenibles**
 
 ### 2. Creación de Scripts en Bash
 
@@ -50,12 +50,12 @@
 
 ## Unidad 2: Cloud Computing
 
-### 8. Cloud Native
+### 1. Cloud Native
 
 - **2.1.1. ¿Qué es Cloud Native?**
 - **2.1.2. Proveedores de la nube**
 
-### 9. Google Cloud como Proveedor
+### 2. Google Cloud como Proveedor
 
 - **2.2.1. Cloud Run**
 - **2.2.2. Compute Engine**
@@ -63,7 +63,7 @@
 - **2.2.4. Artifact Registry**
 - **2.2.5. Productos relacionados (Functions, Scheduler, etc…)**
 
-### 10. Kubernetes
+### 3. Kubernetes
 
 - **2.3.1. Conceptos básicos de Kubernetes**
 - **2.3.2. Creación y administración de clusters**
@@ -71,7 +71,7 @@
 - **2.3.4. Networking**
 - **2.3.5. Storage y Security**
 
-### 11. Concurrencia, Paralelismo y Sistemas Distribuidos
+### 4. Concurrencia, Paralelismo y Sistemas Distribuidos
 
 - **2.4.1. Manejo de concurrencia con Go, Channels y Routines**
 - **2.4.2. Comunicación de procesos usando gRPC**
