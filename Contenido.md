@@ -10,10 +10,11 @@
 
 ### 2. Creación de Scripts en Bash
 
-- **1.2.1. Introducción a Bash**
-- **1.2.2. Estructura básica de un script**
-- **1.2.3. Variables y control de flujo**
-- **1.2.4. Scripts para administración del sistema**
+- [1.2.1. Introducción a Bash](bash_scripts.md#1-2-1-introducción-a-bash)
+- [1.2.2. Estructura básica de un script](bash_scripts.md#1-2-2-estructura-básica-de-un-script)
+- [1.2.3. Variables y control de flujo](bash_scripts.md#1-2-3-variables-y-control-de-flujo)
+- [1.2.4. Scripts para administración del sistema](bash_scripts.md#1-2-4-scripts-para-administración-del-sistema)
+
 
 ### 3. Procesos y Programación Concurrente
 
