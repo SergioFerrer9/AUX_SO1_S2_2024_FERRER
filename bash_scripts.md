@@ -41,3 +41,18 @@ else
   echo "Hola, desconocido"
 fi
 ```
+
+- **Bucles**: Los bucles permiten ejecutar repetidamente un bloque de código. Los bucles for y while son comúnmente usados en Bash.
+
+# Bucle for
+
+```bash
+#!/bin/bash
+# Bucle for
+for i in {1..5}; do
+  echo "Iteración $i"
+done
+```
+
+
+
