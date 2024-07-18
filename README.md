@@ -7,4 +7,4 @@
 - **Segundo Semestre 2024**
 - **Aux: Sergio Alfonso Ferrer García**
 
-- [CONTENIDO](Contenido.md#esquema-de-contenido)
+- [CONTENIDO](Contenido/Contenido.md#esquema-de-contenido)
