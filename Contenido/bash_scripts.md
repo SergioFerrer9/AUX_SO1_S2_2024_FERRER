@@ -112,23 +112,49 @@ Este script añade un nuevo usuario al sistema, asignándole un directorio home 
 
 ```bash
 #!/bin/bash
-# Script para añadir un nuevo usuario
+# Script para añadir un nuevo usuario específico con privilegios de root
 
 # Nombre del usuario
-nuevo_usuario="nuevo_usuario"
+nuevo_usuario="ferrerso1"
 # Contraseña del usuario
-contraseña="contraseña123"
+contraseña="NEWpassword123@"  # Asegúrate de que esta contraseña cumpla con las políticas del sistema
 # Directorio home
 home_dir="/home/$nuevo_usuario"
 # Shell predeterminado
 shell="/bin/bash"
 
+# Verificar si el script se está ejecutando con privilegios de superusuario
+if [ "$(id -u)" -ne 0 ]; then
+  echo "Este script debe ejecutarse como superusuario (root)." >&2
+  exit 1
+fi
+
 # Crear el usuario con el directorio home y el shell predeterminado
 useradd -m -d "$home_dir" -s "$shell" "$nuevo_usuario"
+if [ $? -ne 0 ]; then
+  echo "Error al crear el usuario $nuevo_usuario." >&2
+  exit 1
+fi
+
+echo "Usuario $nuevo_usuario creado."
+
 # Establecer la contraseña del usuario
 echo "$nuevo_usuario:$contraseña" | chpasswd
+if [ $? -ne 0 ]; then
+  echo "Error al establecer la contraseña para $nuevo_usuario." >&2
+  exit 1
+fi
 
-echo "Usuario $nuevo_usuario creado con éxito"
+echo "Contraseña para $nuevo_usuario establecida."
+
+# Añadir el usuario al grupo sudo para otorgarle privilegios de root
+usermod -aG sudo "$nuevo_usuario"
+if [ $? -ne 0 ]; then
+  echo "Error al añadir el usuario $nuevo_usuario al grupo sudo." >&2
+  exit 1
+fi
+
+echo "Usuario $nuevo_usuario añadido al grupo sudo con éxito."
 ```
 
 **Ejemplo de Script para monitorear el uso de memoria**
@@ -146,6 +172,19 @@ if (( $(echo "$mem_libre < 20" | bc -l) )); then
   echo "Advertencia: Memoria libre baja (${mem_libre}%)"
 fi
 ```
+
+**Otros Comandos**
+
+
+```bash
+# id ferrerso1 
+# sudo passwd ferrerso1
+# sudo ./ejemplo4.sh
+# chmod +x ejemplo4.sh
+# nano ejemplo4.sh
+# sudo deluser --remove-home ferrerso1
+```
+
 
 
 
