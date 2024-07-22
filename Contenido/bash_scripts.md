@@ -96,9 +96,14 @@ Este script comprueba el uso del disco y envía una advertencia si el uso supera
 # Obtener el uso del disco
 uso_disco=$(df -h / | grep / | awk '{ print $5 }' | sed 's/%//g')
 
+# Imprimir el valor de uso_disco para depuración
+echo "Uso del disco: $uso_disco%"
+
 # Comprobar si el uso del disco supera el 80%
 if [ "$uso_disco" -gt 80 ]; then
   echo "Advertencia: El uso del disco es del ${uso_disco}%"
+else
+  echo "El uso del disco está dentro de los límites: ${uso_disco}%"
 fi
 ```
 
