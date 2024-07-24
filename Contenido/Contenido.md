@@ -78,3 +78,6 @@
 - **2.4.2. Comunicación de procesos usando gRPC**
 - **2.4.3. Kafka**
 - **2.4.4. NoSQL para sistemas distribuidos**
+
+## VARIOS 3: Instalaciones
+- **3.1.1 Particiones Para instalar Ubuntu**
