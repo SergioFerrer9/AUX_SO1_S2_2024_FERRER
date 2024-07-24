@@ -79,5 +79,6 @@
 - **2.4.3. Kafka**
 - **2.4.4. NoSQL para sistemas distribuidos**
 
-## VARIOS 3: Instalaciones
-- **3.1.1 Particiones Para instalar Ubuntu**
+## VARIOS 3: Referencias
+- [3.1.1 Particiones para instalar Ubuntu](Links.md#Enlaces-de-Referencia)
+
