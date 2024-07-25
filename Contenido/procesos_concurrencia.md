@@ -29,7 +29,7 @@ También será necesario instalar los essentials de desarrollo en Ubuntu, los es
 sudo apt-get install build-essential
 ```
 
-### 2.1.2. Instalación de Python
+### 3.1.2. Instalación de Python
 
 Python usualmente viene instalado en la mayoría de las distribuciones de Linux, sin embargo, se puede verificar si está instalado ejecutando el siguiente comando:
 
