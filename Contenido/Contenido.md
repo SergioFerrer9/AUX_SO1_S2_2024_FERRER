@@ -18,9 +18,9 @@
 
 ### 3. Procesos y Programación Concurrente
 
-- **1.3.1. Manejo de procesos en Linux**
-- **1.3.2. Diagrama de transición de procesos**
-- **1.3.3. Programación concurrente en Linux**
+- [1.3.1. Manejo de procesos en Linux](procesos_concurrencia.md#3.-Procesos-y-Programación-concurrente)
+- [1.3.2. Diagrama de transición de procesos](procesos_concurrencia.md#3.-Procesos-y-Programación-concurrente)
+- [1.3.3. Programación concurrente en Linux](procesos_concurrencia.md#3.-Procesos-y-Programación-concurrente)
 
 ### 4. Rust
 
