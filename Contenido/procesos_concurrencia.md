@@ -1,12 +1,12 @@
-# 2. Procesos y Programación concurrente
+# 3. Procesos y Programación concurrente
 
-## 2.1. Instalación/configuración de C y python en Linux
+## 3.1. Instalación/configuración de C y python en Linux
 
 **¿Por qué instalar C o verificar su instalación?** Linux esta escrito en C, por lo que la mayoría de las herramientas y utilidades en Linux están escritas en este lenguaje, por lo tanto, es importante tener instalado un compilador de C en Linux para poder compilar programas.
 
 C y Python usualmente son lenguajes que ya vienen instalados en la mayoría de las distribuciones de Linux, sin embargo, es importante verificar que estén instalados y en caso de no estarlo, instalarlos.
 
-### 2.1.1. Instalación de C
+### 3.1.1. Instalación de C
 
 Para instalar C en Linux, se debe instalar el compilador de C, `gcc`. Para instalar `gcc` en Ubuntu o Fedora, se debe ejecutar el siguiente comando:
 
@@ -29,7 +29,7 @@ También será necesario instalar los essentials de desarrollo en Ubuntu, los es
 sudo apt-get install build-essential
 ```
 
-### 2.1.2. Instalación de Python
+### 3.1.2. Instalación de Python
 
 Python usualmente viene instalado en la mayoría de las distribuciones de Linux, sin embargo, se puede verificar si está instalado ejecutando el siguiente comando:
 
@@ -43,7 +43,7 @@ En caso de que no esté instalado, se puede instalar Python en Ubuntu o Fedora e
 sudo apt-get/dnf install python3
 ```
 
-## 2.2. Manejo de procesos en Linux
+## 3.2. Manejo de procesos en Linux
 
 ### Introducción a los procesos en Linux
 
@@ -187,7 +187,7 @@ También los procesos se pueden ejecutar utilizando la combinación de teclas, p
       return 0; # termina el programa, el 0 indica que el programa terminó sin error
     }
     ```
-## 2.3. Diagrama de transición de procesos
+## 3.3. Diagrama de transición de procesos
 
 ### Estados de los procesos
 
@@ -252,7 +252,7 @@ En Linux, el planificador de procesos utiliza diferentes algoritmos de planifica
 3. **Simulación de transiciones de estados**
    
 
-## 2.4. Programación concurrente en Linux
+## 3.4. Programación concurrente en Linux
 
 ### Introducción a la programación concurrente
 
