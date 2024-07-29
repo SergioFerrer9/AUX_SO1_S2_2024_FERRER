@@ -257,11 +257,240 @@ En Linux, el planificador de procesos utiliza diferentes algoritmos de planifica
 
 ### Introducción a la programación concurrente
 
+#### ¿Qué es la programación concurrente?
+
+La programación concurrente es un paradigma de programación en el que se ejecutan múltiples tareas de forma simultánea, la programación concurrente se utiliza para realizar tareas concurrentes en un programa.
+
+La programación concurrente permite desarrollar software que ejecute eventos o circunstancias que están sucediendo al mismo tiempo. Los módulos concurrentes interactúan enviándose mensajes entre sí. 
+
+#### ¿Por qué es importante la programación concurrente?
+
+La programación concurrente es importante para mejorar la eficiencia de los recursos y maximizar el rendimiento en sistemas multiprocesador.
+
+Los procesadores de hoy en día tienen múltiples núcleos y múltiples hilos, lo que favorece notablemente este tipo de programación.
+
+#### Diferencia con el paralelismo
+
+La concurrencia dependiendo de los números de nucleos que tenga el procesador puede ser ejecutar tareas de manera simultanea y de forma independiente. Mientras que el paralelimos va de la mano, la idea es dividir una misma tarea en sub-tareas con la finalidad de que se ejecuten de manera simultanea pero que al final se unan para formar una sola tarea. De esta manera el resultado final del paralelismo si importa mientras que en la concurrencia no.
+
+![Concurrencia](./img/concurrencia.png)
+
+![Paralelismo](./img/paralelismo.png)
+
 ### Herramientas y tecnicas de concurrencia en Linux
 
+En linux se pueden utilizar diferentes herramientas y técnicas para programar de manera concurrente, algunas de las herramientas y técnicas más comunes son:
+
+- **Hilos**: Los hilos son procesos ligeros que comparten el mismo espacio de memoria y recursos que el proceso padre, los hilos son útiles para realizar tareas concurrentes en un programa. En C se pueden crear hilos utilizando la biblioteca `pthread.h`, la biblioteca `pthread.h` proporciona funciones y estructuras de datos para crear y gestionar hilos en un programa.
+
+- **Mutex**: Los mutex son semáforos binarios que se utilizan para sincronizar el acceso a recursos compartidos entre hilos, los mutex se utilizan para evitar condiciones de carrera en un programa.
+
 ### Problemas clásicos de concurrencia 
+
+#### Condiciones de carrera
+
+Las condiciones de carrera son situaciones en las que dos o más hilos intentan acceder a un recurso compartido al mismo tiempo, las condiciones de carrera pueden causar problemas como la corrupción de datos, la pérdida de datos, etc.
+
+#### Deadlock
+
+El deadlock es una situación en la que dos o más hilos están esperando a que el otro libere un recurso, el deadlock puede causar que los hilos se bloqueen y no puedan continuar con su ejecución.
+
+#### Starvation
+
+El starvation es una situación en la que un hilo no puede acceder a un recurso compartido porque otros hilos tienen prioridad sobre él, el starvation puede causar que un hilo no pueda continuar con su ejecución.
+
 
 ### Ejemplos
 
 1. **Crear hilos en C**
+  ```c
+  #include <stdio.h>
+  #include <stdlib.h>
+  #include <pthread.h> // pthread library la que contiene las funciones para trabajar con hilos
+
+
+  /* 
+      Esta función es la que se ejecutará en cada hilo.
+      void* : significa que la función puede devolver cualquier tipo de dato.
+      Recibe un argumento de tipo void* que es un apuntador a cualquier tipo de dato.
+  */
+
+  void* funcion_hilo(void* arg) {
+
+      printf("Hola desde el hilo %ld\n", (long)arg); // imprime el id del hilo
+
+      pthread_exit(NULL); // termina el hilo
+  } 
+
+  /* 
+      Funcion con hilos más compleja. Ejecuta un loop de 100000000 iteraciones en cada hilo.
+  */
+
+  void* funcion_hilo_compleja(void* arg) {
+
+      for (int i = 0; i < 100000000; i++) {}
+
+      printf("Hola desde el hilo complejo %ld\n", (long)arg); // imprime el id del hilo
+
+      pthread_exit(NULL); // termina el hilo
+  }
+
+
+  /* 
+      Esta función es la que se ejecutará cada vez que se itere el loop
+  */
+  void function_secuencial(int i) {
+      printf("Hola desde la función secuencial %d\n", i); // imprime el valor de i
+  }
+
+  /* 
+      Esta función es la que se ejecutará cada vez que se itere el loop
+  */
+
+  void function_secuencial_compleja(int i) {
+      for (int i = 0; i < 100000000; i++) {}
+
+      printf("Hola desde la función compleja secuencial %d\n", i); // imprime el valor de i
+  }
+
+  int main() {
+
+      // tomar tiempo desde que inicia
+      clock_t start = clock();
+
+      pthread_t threads[5]; // declara un arreglo de 5 hilos
+
+      for (long i = 0; i < 5; i++) {
+          /* 
+              pthread_create recibe 4 argumentos:
+              1. Un apuntador a la variable pthread_t donde se guardará el id del hilo.
+              2. Un apuntador a la estructura de atributos del hilo. NULL si se quiere usar los valores por defecto.
+              3. La función que se ejecutará en el hilo.
+              4. El argumento que se le pasará a la función.
+          */
+          pthread_create(&threads[i], NULL, funcion_hilo_compleja, (void*)i); // crea un hilo y le pasa la función a ejecutar
+
+      }
+
+      for (long i = 0; i < 5; i++) {
+          /* 
+              pthread_join recibe 2 argumentos:
+              1. El id del hilo que se quiere esperar.
+              2. Un apuntador a la variable donde se guardará el valor de retorno de la función.
+
+              ¿Qué pasa si no se llama a pthread_join?
+              Si no se llama a pthread_join, el hilo seguirá ejecutándose en segundo plano y no se liberarán los recursos que utiliza.
+          */
+          pthread_join(threads[i], NULL); // espera a que el hilo termine
+      }
+
+      // tomar tiempo desde que termina
+      clock_t end = clock();
+
+      double time_spent = (double)(end - start) / CLOCKS_PER_SEC; // calcula el tiempo que tardó en ejecutarse
+
+      printf("Tiempo de ejecución usando hilos fue: %f\n", time_spent); // imprime el tiempo de ejecución
+
+
+      // iniciar otro tiempo
+      start = clock();
+
+      for (int i = 0; i < 5; i++) {
+          function_secuencial_compleja(i); // llama a la función secuencial
+      }
+
+      // tomar tiempo desde que termina
+      end = clock();
+
+      time_spent = (double)(end - start) / CLOCKS_PER_SEC; // calcula el tiempo que tardó en ejecutarse
+
+      printf("Tiempo de ejecución secuencial fue: %f\n", time_spent); // imprime el tiempo de ejecución
+
+
+      /* 
+          Vemos que el tiempo de ejecución usando hilos es mayor que el tiempo de ejecución secuencial.
+
+          ¿Por qué?
+
+          Porque el tiempo que tarda en crear y esperar a los hilos es mayor que el tiempo que se ahorra al ejecutar las funciones secuencialmente.    
+
+      */
+
+      return 0; // termina el programa
+  }
+
+  ```
 2. **Sincronización con Mutex**
+  ```c
+  # include <stdio.h>
+  # include <stdlib.h>
+  # include <pthread.h>
+
+  /* 
+      Creamos dos variables globales:
+      - contador: que será incrementada por los hilos.
+      - mutex: que será usada para proteger la variable contador.
+  */
+
+  int contador = 0 ;
+  pthread_mutex_t mutex ;
+
+  /* 
+      Esta función es la que se ejecutará en cada hilo.
+      void* : significa que la función puede devolver cualquier tipo de dato.
+      Recibe un argumento de tipo void* que es un apuntador a cualquier tipo de dato.
+
+      Dentro de la función se ejecuta un for loop de 1000000 iteraciones.
+
+      En cada iteración se incrementa la variable global contador.
+      Pero antes de incrementarla, se bloquea el mutex con pthread_mutex_lock.
+      Después de incrementarla, se desbloquea el mutex con pthread_mutex_unlock.
+
+      Lo que hace el mutex es asegurar que solo un hilo a la vez pueda incrementar la variable contador.
+      lock y unlock son funciones atómicas, es decir, no pueden ser interrumpidas por otro hilo.
+
+      Al final de la función se llama a pthread_exit(NULL) para terminar el hilo.
+
+      ¿Qué pasaría si no se usara el mutex?
+      - Si no se usara el mutex, los hilos podrían incrementar la variable contador al mismo tiempo.
+      - Esto podría llevar a que el valor de contador no sea el esperado.
+  */
+
+  void* incrementar(void *arg) {
+      for (int i = 0; i < 1000000; i++) {
+          pthread_mutex_lock(&mutex);
+          contador++;
+          pthread_mutex_unlock(&mutex);
+      }
+
+      pthread_exit(NULL);
+  }
+
+
+  /* 
+      En la función main se crean dos hilos con pthread_create.
+      Ambos hilos ejecutarán la función incrementar.
+      Después de crear los hilos, se espera a que terminen con pthread_join.
+
+      Al final se destruye el mutex con pthread_mutex_destroy y se imprime el valor de contador.
+  */
+
+  int main() {
+      pthread_t thread1, thread2;
+
+      pthread_mutex_init(&mutex, NULL); // Inicializamos el mutex 
+
+      pthread_create(&thread1, NULL, incrementar, NULL);
+      pthread_create(&thread2, NULL, incrementar, NULL);
+
+      pthread_join(thread1, NULL);
+      pthread_join(thread2, NULL);
+
+      pthread_mutex_destroy(&mutex); // Destruimos el mutex
+
+      printf("El contador es: %d\n", contador);
+
+
+      return 0;
+  }
+  ```
