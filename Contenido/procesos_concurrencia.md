@@ -152,12 +152,13 @@ También los procesos se pueden ejecutar utilizando la combinación de teclas, p
   Ahora vamos a crear un script en la bash que inicie un proceso en segundo plano y luego lo mate después de un tiempo determinado.
 
     ```bash
-    #!/bin/bash
-    sleep 100 & # inicia un proceso en segundo plano
-    PID=$! # guarda el PID del proceso en la variable PID
-    sleep 10 # espera 10 segundos
-    kill $PID # mata el proceso con el PID guardado en la variable
-    echo "Proceso terminado"
+   #!/bin/bash
+   sleep 100 & # Inicia un proceso en segundo plano que duerme durante 100 segundos
+   PID=$! # Guarda el PID del proceso en segundo plano en la variable PID
+   echo "El PID del proceso en segundo plano es: $PID" # Imprime el PID del proceso
+   sleep 10 # Espera 10 segundos
+   kill $PID # Mata el proceso en segundo plano usando el PID guardado en la variable
+   echo "Proceso terminado" # Imprime un mensaje indicando que el proceso ha sido terminado
     ```
 
     Para poder visualizar el proceso en ejecución, se puede utilizar el comando `ps` o `top` para ver el proceso en ejecución.
