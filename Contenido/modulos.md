@@ -274,6 +274,8 @@ Para ver al lista de llamadas al sistema en un sistema Linux, podemos utilizar e
 
 ### Componentes Clave:
 
+![System Calls](./img/calls.png)
+
 - **1. Anillo 3 (Nivel de Aplicación):**
 
 - **Aplicación:** Representa las aplicaciones en el espacio de usuario que se ejecutan en el Anillo 3, el nivel de privilegio más bajo. Las aplicaciones aquí están aisladas del hardware y de funciones críticas del sistema por razones de seguridad y estabilidad.
