@@ -272,6 +272,31 @@ Las llamadas al sistema son una forma de comunicación entre el software de usua
 
 Para ver al lista de llamadas al sistema en un sistema Linux, podemos utilizar el comando `man syscalls`
 
+### Componentes Clave:
+- **Anillo 3 (Nivel de Aplicación):**
+
+- **Aplicación:** Representa las aplicaciones en el espacio de usuario que se ejecutan en el Anillo 3, el nivel de privilegio más bajo. Las aplicaciones aquí están aisladas del hardware y de funciones críticas del sistema por razones de seguridad y estabilidad.
+Llamadas al Sistema:
+
+- **Llamadas al Sistema:** Estos son los mecanismos a través de los cuales las aplicaciones solicitan servicios del kernel. Cuando una aplicación necesita realizar tareas como operaciones de archivos, comunicación en red o interacciones con el hardware, realiza llamadas al sistema al kernel.
+
+- **Anillo 0 (Nivel del Kernel):**
+ - **Kernel Omnisciente:** El kernel opera en el Anillo 0, que tiene el nivel más alto de privilegio. Tiene acceso irrestricto al hardware y a los recursos del sistema. El kernel gestiona operaciones críticas, incluyendo la planificación de procesos, la gestión de memoria y el control de dispositivos.
+
+- **Interfaces del Kernel:**
+
+ - **Archivos:** El kernel gestiona el acceso al sistema de archivos y maneja las operaciones de archivos solicitadas por las aplicaciones.
+
+- **Red:** El kernel controla las interfaces de red y gestiona la comunicación en red.
+- **Hardware:** El kernel interactúa directamente con los dispositivos de hardware, proporcionando una capa de abstracción para las aplicaciones.
+- **Todo:** Esto indica el control integral del kernel sobre todas las operaciones y recursos del sistema.
+
+### Explicación del Concepto:
+
+- **Anillos de Privilegio:** Las CPUs modernas utilizan un sistema de niveles de privilegio llamados anillos para proteger el sistema de código defectuoso o malicioso. El Anillo 0 es el más privilegiado (modo kernel), mientras que el Anillo 3 es el menos privilegiado (modo usuario).
+
+- **Llamadas al Sistema:** Las aplicaciones en el Anillo 3 no pueden acceder directamente al hardware o a los recursos críticos. En su lugar, realizan llamadas al sistema para solicitar servicios del kernel, asegurando una interacción controlada y segura con el sistema.
+
 ### Ejemplo
 
 Vamos hacer un programa sencillo en C para imprimir el id del proceso actual.
