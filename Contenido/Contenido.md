@@ -23,6 +23,12 @@
 - [1.3.3. Diagrama de transición de procesos](procesos_concurrencia.md#3.-Procesos-y-Programación-concurrente)
 - [1.3.4. Programación concurrente en Linux](procesos_concurrencia.md#3.-Procesos-y-Programación-concurrente)
 
+### 4. Módulos de Kernel
+- [1.4.1 ¿Qué son los módulos del kernel?](modulos.md#4.-modulos-de-Kernel)
+- [1.4.2 Creación de módulos en Linux](modulos.md#4.-modulos-de-Kernel)
+- [1.4.3 Introducción a System Calls](modulos.md#4.-modulos-de-Kernel)
+- [1.4.4 Process Control Block (PCB)](modulos.md#4.-modulos-de-Kernel)
+
 ### 4. Rust
 
 - **1.4.1. Conceptos básicos de Rust**
