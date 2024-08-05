@@ -279,7 +279,7 @@ Para ver al lista de llamadas al sistema en un sistema Linux, podemos utilizar e
 - **Aplicación:** Representa las aplicaciones en el espacio de usuario que se ejecutan en el Anillo 3, el nivel de privilegio más bajo. Las aplicaciones aquí están aisladas del hardware y de funciones críticas del sistema por razones de seguridad y estabilidad.
 Llamadas al Sistema:
 
-- ** 2. Llamadas al Sistema:** Estos son los mecanismos a través de los cuales las aplicaciones solicitan servicios del kernel. Cuando una aplicación necesita realizar tareas como operaciones de archivos, comunicación en red o interacciones con el hardware, realiza llamadas al sistema al kernel.
+- **2. Llamadas al Sistema:** Estos son los mecanismos a través de los cuales las aplicaciones solicitan servicios del kernel. Cuando una aplicación necesita realizar tareas como operaciones de archivos, comunicación en red o interacciones con el hardware, realiza llamadas al sistema al kernel.
 
 - **3. Anillo 0 (Nivel del Kernel):**
  - **Kernel Omnisciente:** El kernel opera en el Anillo 0, que tiene el nivel más alto de privilegio. Tiene acceso irrestricto al hardware y a los recursos del sistema. El kernel gestiona operaciones críticas, incluyendo la planificación de procesos, la gestión de memoria y el control de dispositivos.
