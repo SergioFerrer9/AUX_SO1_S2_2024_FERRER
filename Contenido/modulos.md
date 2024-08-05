@@ -1,14 +1,14 @@
-# 3. Módulos de Kernel
+# 4. Módulos de Kernel
 
 
-## 3.1 ¿Qué son los módulos del kernel?
+## 4.1 ¿Qué son los módulos del kernel?
 
 El kernel como ya vimos es el puente entre el hardware y el resto de funciones del sistema operativo, maneja el sistema de ficheros, el acceso a red y otras tareas de bajo nivel que son fundamentales.
 
 El kernel está formado por un fichero principal que redice en `/boot` y que se carga en memoria al arrancar el sistema. Sin embargo, el kernel no puede tener todos los drivers y funciones necesarias para todos los dispositivos que existen, por lo que se pueden añadir módulos al kernel para añadir funcionalidades.
 
 
-### 3.1.1 Definición y proposito
+### 4.1.1 Definición y proposito
 
 Los modulos de kernel son archivos que contienen código objeto que pueden extender las funcionalidades del kernel.
 
@@ -24,7 +24,7 @@ Los módulos de kernel son una forma de extender el kernel sin tener que recompi
 
 El paquete kmod es el encargado de gestionar los módulos del kernel en sistemas. La mayoria de los sistemas estilo Unix y Microsoft Windows soportan módulos cargables del núcleo.
 
-### 3.1.2 Tipos de módulos
+### 4.1.2 Tipos de módulos
 
 Ya vimos que los módulos residen en `/lib/modules`. Estos se encuentran organizados en directorios que indican el tipo de dispositivo o el propósito del módulo.
 
@@ -55,16 +55,16 @@ modinfo <nombre_modulo>
 ```
 
 
-## 3.2 Creación de módulos en Linux
+## 4.2 Creación de módulos en Linux
 
-### 3.2.1 Estructura básica de un módulo de kernel
+### 4.2.1 Estructura básica de un módulo de kernel
 
 Un módulo de kernel es un archivo fuente que contiene funciones que se pueden cargar y descargar en tiempo de ejecución. Estos archivos fuente tienen la extensión `.c` y se compilan en archivos objeto con la extensión `.o`.
 
 Las funciones de inicialización y limpieza de un módulo de kernel son `init_module` y `cleanup_module` respectivamente.
 
 
-### 3.2.2 Compilación de módulos
+### 4.2.2 Compilación de módulos
 
 Para la compilación de módulos de kernel se utiliza el comando `make` que compila el archivo fuente y genera el archivo objeto.
 
@@ -260,9 +260,9 @@ cat /proc/sysinfo # imprime lo escrito en el archivo
 sudo rmmod <name> # desinstalar modulo
 ```
 
-## 3.3 Introducción a System Calls
+## 4.3 Introducción a System Calls
 
-### 3.3.1 Definición y propósito
+### 4.3.1 Definición y propósito
 
 Las llamadas al sistema (system calls) son una interfaz entre el software de usuario y el kernel. Permiten a los programas de usuario acceder a las funciones del kernel.
 
@@ -288,9 +288,9 @@ int main() {
 }
 ```
 
-## 3.4 Process Control Block (PCB)
+## 4.4 Process Control Block (PCB)
 
-### 3.4.1 Definición y propósito
+### 4.4.1 Definición y propósito
 
 Este tema no lo pudimos ver en el tema anterior, pero es importante mencionarlo.
 
