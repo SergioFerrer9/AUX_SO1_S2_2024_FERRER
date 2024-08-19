@@ -619,8 +619,6 @@ Comencemoz a analizar el archivo docker-compose.yml.
 
 Por útlimo, vamos a realizar un ejemplo, vamos a construir un servicio con FastAPI y un volumen que guarde los datos recibidos por el servicio en formato JSON.
 
-Todo el código de este ejemplo lo pueden encontrar en la carpeta de ejemplos de la unidad 1
-
 Para iniciar, vamos a crear un entorno virtual y vamos a instalar las dependencias necesarias para el servicio.
 
 ```bash
