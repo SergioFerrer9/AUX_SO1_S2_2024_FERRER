@@ -1,1 +1,1 @@
-/run/media/alvaro/08485E3D485E29A8/2024/SEGUNDO-SEMESTRE/PRAC-FINALES-LAB-SOPES1/SO1_S2_2024/contenido/unidad_1/ejemplos/rust_service/target/debug/rust_service: /run/media/alvaro/08485E3D485E29A8/2024/SEGUNDO-SEMESTRE/PRAC-FINALES-LAB-SOPES1/SO1_S2_2024/contenido/unidad_1/ejemplos/rust_service/src/main.rs
+/home/ubuntu/Documentos/SO1_AUX/AUX_SO1_S2_2024_FERRER/Contenido/ejemplos/rust_service/target/debug/rust_service: /home/ubuntu/Documentos/SO1_AUX/AUX_SO1_S2_2024_FERRER/Contenido/ejemplos/rust_service/src/main.rs

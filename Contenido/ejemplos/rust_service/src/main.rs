@@ -29,7 +29,7 @@ struct SystemInfo {
     - memory_usage: La cantidad de memoria que está utilizando el proceso.
     - cpu_usage: El porcentaje de uso de CPU que está utilizando el proceso.
 
-    Serde nos deja implementar macros a acada campo de la estructura de datos para poder renombrar
+    Serde nos deja implementar macros a cada campo de la estructura de datos para poder renombrar
     los campos en el JSON que se genere.
 */
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
