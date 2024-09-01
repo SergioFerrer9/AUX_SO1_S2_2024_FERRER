@@ -35,10 +35,86 @@ El término "Cloud Native" describe una metodología moderna para construir y ej
 ### Características Clave
 
 1. **Microservicios:** Las aplicaciones Cloud Native suelen estar compuestas por microservicios, que son pequeñas piezas de funcionalidad autónoma que se comunican entre sí a través de APIs. Esto permite un desarrollo más rápido y ciclos de despliegue más cortos.
+
+**Ejemplo:**
+- **Sistema de Comercio Electrónico:** En lugar de tener una aplicación monolítica que maneje todos los aspectos (usuarios, productos, pagos, etc.), se podrían crear microservicios independientes:
+  - **Servicio de Usuarios:** Maneja autenticación, registro, perfiles de usuario.
+  - **Servicio de Productos:** Gestiona el catálogo de productos, inventario, etc.
+  - **Servicio de Pagos:** Procesa transacciones, integración con pasarelas de pago.
+  - **Servicio de Envíos:** Coordina la logística, seguimiento de envíos.
+
 2. **Contenedores:** Los contenedores, como los que proporciona Docker, encapsulan una aplicación y sus dependencias en un solo paquete portátil, facilitando la consistencia y la escalabilidad en diferentes entornos de nube.
+
+**Ejemplo:**
+- **Despliegue de Aplicaciones en Contenedores:** Con un contenedor Docker, puedes ejecutar una aplicación web construida con Node.js de manera consistente en cualquier servidor compatible con Docker.
+
+  ```Dockerfile
+  FROM node:14
+  WORKDIR /app
+  COPY package*.json ./
+  RUN npm install
+  COPY . .
+  EXPOSE 3000
+  CMD ["node", "app.js"]
+  ```
+
 3. **Automatización Continua (CI/CD):** Las prácticas de integración continua y despliegue continuo son esenciales en Cloud Native, permitiendo a los desarrolladores integrar código, probar y desplegar aplicaciones de forma rápida y automática.
+
+**Ejemplo:**
+
+Pipeline CI/CD con Jenkins: Configura un pipeline que:
+- CI: Ejecuta automáticamente pruebas unitarias al hacer un commit en un repositorio GitHub.
+- CD: Construye una imagen Docker de la aplicación y la despliega en un clúster de Kubernetes.
+
 4. **Escalabilidad Dinámica:** Las aplicaciones Cloud Native están diseñadas para escalar automáticamente en respuesta a la demanda, optimizando el uso de recursos y costes.
+
+**Ejemplo:**
+
+Autoescalado en Kubernetes: Kubernetes ajusta automáticamente la cantidad de pods según la utilización de CPU.
+
+```yaml
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: my-app-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: my-app
+  minReplicas: 2
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 80
+```
+
 5. **Resiliencia y Recuperación:** Estas aplicaciones están construidas para ser resilientes, lo que significa que pueden recuperarse rápidamente de fallos y mantenerse operativas.
+
+**Ejemplo:**
+
+Patrón Circuit Breaker: Implementa un Circuit Breaker para manejar fallos en el servicio de pago, proporcionando una respuesta alternativa si el servicio está caído.
+
+```java
+import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
+import org.springframework.stereotype.Service;
+
+@Service
+public class PaymentService {
+    private final CircuitBreakerFactory circuitBreakerFactory;
+
+    public PaymentService(CircuitBreakerFactory circuitBreakerFactory) {
+        this.circuitBreakerFactory = circuitBreakerFactory;
+    }
+
+    public String processPayment() {
+        return circuitBreakerFactory.create("paymentService").run(() -> {
+            // Lógica para procesar el pago
+            return "Payment Processed Successfully";
+        }, throwable -> "Fallback: Payment Service Unavailable");
+    }
+}
+```
+
+
 
 ### Ventajas
 
