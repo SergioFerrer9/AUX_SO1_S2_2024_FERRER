@@ -158,6 +158,8 @@ Los proveedores de la nube ofrecen una variedad de servicios que permiten a las 
 2. **Plataforma como Servicio (PaaS):** Provisión de una plataforma completa para el desarrollo, pruebas, y despliegue de aplicaciones sin preocuparse por la gestión del hardware subyacente. Ejemplo: AWS Elastic Beanstalk, Google App Engine.
 3. **Software como Servicio (SaaS):** Provisión de aplicaciones listas para usar que están alojadas y gestionadas por el proveedor de la nube. Ejemplo: Microsoft Office 365, Google Workspace.
 
+![Hipervisor](./img/servicios.jpg)
+
 ### Consideraciones al Elegir un Proveedor de Nube
 
 - **Costo:** Evaluar los modelos de precios y costos a largo plazo.
