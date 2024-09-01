@@ -10,6 +10,8 @@ La virtualización se logra mediante un software conocido como "hipervisor" que 
 - **Hipervisor de tipo 1 (bare-metal):** Corre directamente sobre el hardware físico y administra directamente los recursos del hardware. Ejemplos incluyen VMware ESXi, Microsoft Hyper-V y Xen.
 - **Hipervisor de tipo 2 (hosted):** Corre sobre un sistema operativo y soporta la ejecución de máquinas virtuales como aplicaciones. Ejemplos incluyen VMware Workstation y Oracle VirtualBox.
 
+![Hipervisor](./img/hipervisores.jpg)
+
 ### Tipos de Virtualización
 
 1. **Virtualización de Servidores:** Permite que un solo servidor físico se divida en múltiples servidores virtuales, cada uno con su propio sistema operativo y aplicaciones.
