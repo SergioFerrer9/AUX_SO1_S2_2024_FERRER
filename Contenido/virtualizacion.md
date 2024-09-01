@@ -150,6 +150,8 @@ Los proveedores de la nube ofrecen una variedad de servicios que permiten a las 
    - **Servicios destacados:** Oracle Autonomous Database, Oracle Cloud Infrastructure (OCI), y Oracle ERP Cloud.
    - **Fortalezas:** Fuerte enfoque en aplicaciones empresariales y bases de datos.
 
+![Hipervisor](./img/proveedores.png)
+
 ### Tipos de Servicios Ofrecidos
 
 1. **Infraestructura como Servicio (IaaS):** Provisión de recursos de computación, como servidores virtuales y almacenamiento, que los usuarios pueden alquilar y gestionar según sus necesidades. Ejemplo: Amazon EC2, Google Compute Engine.
