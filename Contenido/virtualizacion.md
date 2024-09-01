@@ -1,4 +1,4 @@
-# Virtualizacion y Colud Native
+# Virtualizacion y Cloud Native
 
 ## 1. Virtualización
 
