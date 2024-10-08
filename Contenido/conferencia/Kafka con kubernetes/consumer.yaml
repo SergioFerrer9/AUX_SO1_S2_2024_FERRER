@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kafka-consumer
+  namespace: kafka
+spec:
+  containers:
+    - name: consumer
+      image: python:3.9-slim
+      command:
+        - /bin/bash
+        - -c
+        - |
+          pip install kafka-python && python /app/consumer.py
+      volumeMounts:
+        - name: consumer-scripts
+          mountPath: /app/consumer.py
+          subPath: consumer.py
+  volumes:
+    - name: consumer-scripts
+      configMap:
+        name: consumer-config
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: consumer-config
+  namespace: kafka
+data:
+  consumer.py: |
+    from kafka import KafkaConsumer
+
+    # Creamos el consumidor de kafka
+    consumer = KafkaConsumer(
+        'test-topic',
+        bootstrap_servers='my-cluster-kafka-bootstrap:9092',
+        auto_offset_reset='earliest',  # tener en cuenta la configuracion de lectura earliest | latest
+        enable_auto_commit=True,
+        group_id='unique-consumer-group' 
+    )
+
+    try:
+        for message in consumer:
+            print(f"Mensaje recibido: {message.value.decode('utf-8')}")
+    except Exception as e:
+        print(f"Error: {e}")
+    finally:
+        consumer.close()

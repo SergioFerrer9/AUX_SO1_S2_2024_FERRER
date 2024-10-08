@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kafka-producer
+  namespace: kafka
+spec:
+  containers:
+    - name: producer
+      image: python:3.9-slim
+      command:
+        - /bin/bash
+        - -c
+        - |
+          pip install kafka-python && python /app/producer.py
+      volumeMounts:
+        - name: producer-scripts
+          mountPath: /app/producer.py
+          subPath: producer.py
+  volumes:
+    - name: producer-scripts
+      configMap:
+        name: producer-config
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: producer-config
+  namespace: kafka
+data:
+  producer.py: |
+    from kafka import KafkaProducer
+    import time
+
+    producer = KafkaProducer(bootstrap_servers='my-cluster-kafka-bootstrap:9092')
+
+    for i in range(10):
+        message = f'Mensaje desde el productor  {i + 1}'
+        producer.send('test-topic', message.encode('utf-8'))
+        print(f'Mensaje enviado: {message}')
+        time.sleep(4)
+
+    producer.flush()
+    producer.close()
