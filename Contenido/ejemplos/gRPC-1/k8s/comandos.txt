@@ -1,0 +1,25 @@
+-- Aplicar namespace
+kubectl apply -f namespace.yaml
+
+-- Aplicar el Servicio
+kubectl apply -f grpc-server-service.yaml
+
+-- Aplicar los Deployments
+kubectl apply -f grpc-server-deployment.yaml
+kubectl apply -f grpc-client-deployment.yaml
+
+-- Eliminar los Deployments
+kubectl delete deployment grpc-server -n grpc-app
+kubectl delete deployment grpc-client -n grpc-app
+
+-- Eliminar los Servicios
+kubectl delete service grpc-server -n grpc-app
+
+-- Verificar los Pods
+kubectl get pods -n grpc-app
+
+-- Verificar los Servicios
+kubectl get services -n grpc-app
+
+-- logs
+kubectl logs -f grpc-server-b97487b96-rxdq9 -n grpc-app

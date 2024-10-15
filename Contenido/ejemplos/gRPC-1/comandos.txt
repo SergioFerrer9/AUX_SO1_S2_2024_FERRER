@@ -1,0 +1,38 @@
+go get google.golang.org/grpc
+go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+
+protoc --go_out=. --go-grpc_out=. user.proto
+
+
+
+
+
+docker stop grpc-server
+docker rm grpc-server
+
+
+-- Ejecutar el cliente
+docker run -it --name grpc-client --network grpc-network grpc-client
+docker run -d --name grpc-server --network grpc-network grpc-server
+
+
+
+-- Detener todos los contenedores
+docker stop $(docker ps -aq)
+
+-- Eliminar todos los contenedores
+docker rm $(docker ps -aq)
+
+-- crear una network
+docker network create grpc-network
+
+-- logs
+docker logs grpc-server
+docker logs grpc-client
+
+
+docker tag grpc-server sergioferrer9/grpc-server:latest
+docker tag grpc-client sergioferrer9/grpc-client:latest
+docker push sergioferrer9/grpc-server:latest
+docker push sergioferrer9/grpc-client:latest

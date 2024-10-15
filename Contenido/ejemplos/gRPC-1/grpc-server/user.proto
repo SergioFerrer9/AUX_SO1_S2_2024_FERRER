@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package userpb;
+
+// Cambia la opción go_package para incluir un nombre de paquete válido.
+option go_package = "./userpb;userpb";
+
+// Definimos el mensaje User con nombre y edad
+message User {
+  string name = 1;
+  int32 age = 2;  
+}
+
+// Definimos la respuesta del servidor
+message UserResponse {
+  string message = 1;
+}
+
+// Definimos el servicio que tendrá el servidor
+service UserService {
+  // El servidor recibirá un mensaje User y devolverá UserResponse
+  rpc SendUserInfo(User) returns (UserResponse);
+}
