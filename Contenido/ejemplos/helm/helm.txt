@@ -1,0 +1,43 @@
+-- Instalar Grafana y Prometheus utilizando Heml....
+----------------------------------------------------
+
+-- install helm
+
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+
+
+-- Agregar el repositorio de Helm para Prometheus:
+
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
+
+-- Instalar Prometheus
+
+helm install prometheus prometheus-community/prometheus
+
+-- Agregar el repositorio de Helm para Grafana
+
+helm repo add grafana https://grafana.github.io/helm-charts
+helm repo update
+
+-- Instalar Grafana
+
+helm install grafana grafana/grafana
+
+-- Acceder a Grafana: Obtén la contraseña y accede a la interfaz web
+
+kubectl get secret grafana -o jsonpath="{.data.admin-password}" | base64 --decode
+
+-- Revisar el servicio existente
+
+kubectl get services
+
+-- Configurar los servicios de Grafana y Prometheus como LoadBalancer
+
+kubectl patch service grafana -p '{"spec": {"type": "LoadBalancer"}}'
+kubectl patch service prometheus-server -p '{"spec": {"type": "LoadBalancer"}}'
+
+kubectl expose service grafana --type=LoadBalancer --port=80
+kubectl expose service prometheus-server --type=LoadBalancer --port=80
+
+
