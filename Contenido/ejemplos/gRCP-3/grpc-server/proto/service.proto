@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "./";  // Ruta
+
+service UserService {
+  rpc SendUserData (UserRequest) returns (UserResponse);
+}
+
+message UserRequest {
+  string name = 1;
+  int32 age = 2;
+}
+
+message UserResponse {
+  string message = 1;
+}

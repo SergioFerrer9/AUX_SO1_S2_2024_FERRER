@@ -1,0 +1,69 @@
+# Instalar protoc
+sudo apt install -y protobuf-compiler  # Linux
+
+# Instalar los plugins de Go para gRPC
+go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+
+# Agregar $GOPATH/bin al PATH si no está configurado
+export PATH="$PATH:$(go env GOPATH)/bin"
+
+protoc-gen-go --version
+protoc-gen-go-grpc --version
+
+# Crear el directorio para el Server
+mkdir grpc-server && cd grpc-server
+go mod init grpc-server
+mkdir proto
+
+# Compilar el archivo proto 
+protoc --go_out=./proto --go-grpc_out=./proto proto/service.proto
+
+# crear server.go
+
+# Instalar Dependencias.
+Desde la raíz de grpc-server, ejecuta
+go get google.golang.org/grpc
+go get google.golang.org/protobuf
+
+# actualiza los módulos:
+go mod tidy
+
+#### CLIENTE
+# Dentro de la carpeta grpc-client, inicializa un módulo de Go:
+go mod init grpc-client
+
+# Instalar Dependencias.
+Desde la raíz de grpc-server, ejecuta
+go get google.golang.org/grpc
+go get google.golang.org/protobuf
+
+docker build -t sergioferrer9/grpc-server:1.0 .
+docker run -d --name grpc-server -p 50051:50051 sergioferrer9/grpc-server:1.0
+docker push sergioferrer9/grpc-server:1.0
+
+docker build -t sergioferrer9/grpc-client:1.0 .
+docker run -d --name grpc-client --network="host" sergioferrer9/grpc-client:1.0
+docker push sergioferrer9/grpc-client:1.0
+
+
+# PRODUCER, CONSUMER, KAFKA............
+
+mkdir go-producer 
+cd go-producer
+go mod init go-producer
+
+mkdir go-consumer 
+cd go-consumer
+go mod init go-consumer
+
+#instalar Dependencias
+go mod tidy
+
+# Producer
+docker build -t sergioferrer9/kafka-producer:1.1 .
+docker push sergioferrer9/kafka-producer:1.1
+
+# Consumer
+docker build -t sergioferrer9/kafka-consumer:1.0 .
+docker push sergioferrer9/kafka-consumer:1.0
