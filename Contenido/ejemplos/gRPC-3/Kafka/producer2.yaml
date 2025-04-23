@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafka-producer2
+  namespace: kafka
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kafka-producer2
+  template:
+    metadata:
+      labels:
+        app: kafka-producer2
+    spec:
+      containers:
+        - name: producer
+          image: sergioferrer9/kafka-producer:1.2

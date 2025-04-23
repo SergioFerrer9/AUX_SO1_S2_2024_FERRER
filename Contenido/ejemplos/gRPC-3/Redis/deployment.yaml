@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-go-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis-go-app
+  template:
+    metadata:
+      labels:
+        app: redis-go-app
+    spec:
+      containers:
+      - name: app
+        image: sergioferrer9/go-redis-app:1.0
+        env:
+        - name: REDIS_HOST
+          value: "redis-service:6379"
+        - name: REDIS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: redis-secret
+              key: password
