@@ -1,4 +1,5 @@
 # AUX_SO1_S2_2024_FERRER
+# AUX_SO1_S1_2025_FERRER
 
 - **Universidad de San Carlos de Guatemala**
 - **Facultad de Ingeniería**
